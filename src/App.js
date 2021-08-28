@@ -46,7 +46,7 @@ border:'none',
 boxShadow:'5px 5px 5px gray, 5px 5px 5px gray'
 }
 
-const [fUser, setfUser] = useState(0)
+let [fUser, setfUser] = useState(0)
 
 return(
 <div style={{textAlign:'left'}}>
@@ -67,7 +67,7 @@ return <div style={{backgroundColor:'#3D3C3A', marginBottom:'10px', padding:'10p
 )
 }
 
-<button style={styleButton} onClick={() => setfUser(fUser+3)}>Previous</button>
+<button style={styleButton} onClick={() => setfUser(fUser-3)}>Previous</button>
 <button style={styleButton} onClick={() => setfUser(fUser+3)}>Next</button>
 
 </div>
