@@ -36,11 +36,24 @@ fetch('https://jsonplaceholder.typicode.com/users')
 .then(data => setUsers(data));
 }, [])
 
+const styleButton ={
+padding:'5px',
+margin:'10px',
+fontSize:'25px',
+color:'white',
+backgroundColor:'#3D3C3A',
+border:'none',
+boxShadow:'5px 5px 5px gray, 5px 5px 5px gray'
+}
+
+const [fUser, setfUser] = useState(0)
+
 return(
 <div style={{textAlign:'left'}}>
-<h3>Dynamic Users: {users.length}</h3>{
-users.map(user => {
-return <div style={{backgroundColor:'#3D3C3A', marginBottom:'10px', padding:'10px'}}>
+<h3>Dynamic Users: {users.length}</h3>
+{
+users.slice(fUser, fUser+3).map(user => {
+return <div style={{backgroundColor:'#3D3C3A', marginBottom:'10px', padding:'10px', boxShadow:'5px 5px 5px gray, 5px 5px 5px gray'}}>
 <p>Name: {user.name}</p>
 <li>Email: {user.email}</li>
 <li>Phone: {user.phone}</li>
@@ -48,11 +61,15 @@ return <div style={{backgroundColor:'#3D3C3A', marginBottom:'10px', padding:'10p
 <li>street: {user.address.street}</li>
 <li>City: {user.address.city}</li>
 <li>Zip Code: {user.address.zipcode}</li>
-<li>company: {user.company.name}</li>
+<li>Company: {user.company.name}</li>
 </div>
 }
 )
 }
+
+<button style={styleButton} onClick={() => setfUser(fUser+3)}>Previous</button>
+<button style={styleButton} onClick={() => setfUser(fUser+3)}>Next</button>
+
 </div>
 );
 }
