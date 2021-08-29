@@ -31,7 +31,7 @@ function App() {
 function Users(){
 const [users, setUsers] = useState([]);
 useEffect(()=>{
-fetch('https://jsonplaceholder.typicode.com/users')
+fetch('usersdata.json')
 .then(res => res.json())
 .then(data => setUsers(data));
 }, [])
@@ -46,7 +46,13 @@ border:'none',
 boxShadow:'5px 5px 5px gray, 5px 5px 5px gray'
 }
 
-let [fUser, setfUser] = useState(0)
+const [fUser, setfUser] = useState(0)
+
+if(fUser < 0){
+setfUser(0)
+}else if(fUser > (users.length-3)){
+setfUser(users.length - 3)
+}
 
 return(
 <div style={{textAlign:'left'}}>
